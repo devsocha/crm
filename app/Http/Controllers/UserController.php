@@ -16,6 +16,13 @@ class UserController extends Controller
 
     public function viewLoginPage()
     {
+        try{
+            $this->userService->firstRunApp();
+        }catch (\Exception $e)
+        {
+            throw new \Exception('Błąd bazy danych');
+        }
+
         return view('login');
     }
 
@@ -35,6 +42,10 @@ class UserController extends Controller
                 'message'=>$e->getMessage(),
             ];
         }
-        return redirect()->route('home');
+        if($result['data']===true){
+            return redirect()->route('home');
+        }
+        return back();
+
     }
 }

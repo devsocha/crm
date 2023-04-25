@@ -14,6 +14,14 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
+    public function firstRunApp()
+    {
+        $count = $this->userRepository->count();
+        if($count==0)
+        {
+            $this->userRepository->createFirstUser();
+        }
+    }
     public function login($data)
     {
         $validator= Validator::make($data,[
@@ -22,10 +30,10 @@ class UserService
         ]);
         if($this->userRepository->login($data))
         {
-            $message = 'Poprawnie zalogowany';
+            $message = true;
         }else
         {
-            $message =  'Błędne dane logowania';
+            $message =  false;
         }
         return $message;
     }

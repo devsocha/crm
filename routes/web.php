@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [\App\Http\Controllers\UserController::class,'viewLoginPage']);
+Route::get('/login', [\App\Http\Controllers\UserController::class,'viewLoginPage'])->name('login');
+Route::post('/login/submit', [\App\Http\Controllers\UserController::class,'loginSubmit'])->name('login-submit');
 

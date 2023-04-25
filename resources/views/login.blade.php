@@ -2,7 +2,8 @@
 @include('layout.script')
 <div class="containter">
 
-    <form style="padding-top:40px; margin:auto; width: 300px;" action="#" method="post">
+    <form style="padding-top:40px; margin:auto; width: 300px;" action="{{route('login-submit')}}" method="post">
+        @csrf
         <div class="mb-3">
             <label for="Inputlogin" class="form-label">Login</label>
             <input type="text" class="form-control" name="login" id="Inputlogin">
