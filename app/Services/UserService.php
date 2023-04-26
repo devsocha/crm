@@ -37,4 +37,8 @@ class UserService
         }
         return $message;
     }
+    public function logout()
+    {
+        $this->userRepository->logout();
+    }
 }

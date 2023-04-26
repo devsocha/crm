@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository
@@ -15,7 +16,11 @@ class UserRepository
     }
     public function login($data)
     {
-        return $this->user->attempt($data);
+        return Auth::attempt($data);
+    }
+    public function logout()
+    {
+         Auth::logout();
     }
 
     public function count()

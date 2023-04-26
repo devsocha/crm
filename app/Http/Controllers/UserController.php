@@ -34,7 +34,7 @@ class UserController extends Controller
         ]);
         $result= ['status'=>200];
         try{
-            $result['data'] = $this->userService;
+            $result['data'] = $this->userService->login($data);
         }catch (\Exception $e)
         {
             $result = [
@@ -42,10 +42,16 @@ class UserController extends Controller
                 'message'=>$e->getMessage(),
             ];
         }
-        if($result['data']===true){
+        if($result['data']){
             return redirect()->route('home');
         }
         return back();
 
+    }
+
+    public function logout()
+    {
+        $this->userService->logout();
+        return redirect()->route('login');
     }
 }
