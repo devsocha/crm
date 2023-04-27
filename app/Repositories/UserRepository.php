@@ -22,7 +22,10 @@ class UserRepository
     {
          Auth::logout();
     }
-
+    public function getUserByMail($mail)
+    {
+        return $this->user->where('email',$mail)->first();
+    }
     public function count()
     {
         return $this->user->count();

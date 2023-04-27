@@ -13,7 +13,7 @@
             <input type="password" name="password" class="form-control" id="Password">
         </div>
         <button type="submit" class="btn btn-primary">Zaloguj się</button>
-        <a href="" class="btn btn-primary">Resetuj hasło</a>
+        <a href="{{route('password.restart')}}" class="btn btn-primary">Resetuj hasło</a>
     </form>
 
 </div>
