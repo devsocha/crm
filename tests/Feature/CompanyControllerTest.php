@@ -11,9 +11,9 @@ class CompanyControllerTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_company_route(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/companies');
 
         $response->assertStatus(200);
     }

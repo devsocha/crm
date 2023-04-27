@@ -29,4 +29,12 @@ class CompanyService
         $nip = str_replace('-','',$data['nip']);
         return $this->companyRepository->getCompanyByNip($nip);
     }
+
+    public function getCompanyByName(array $data)
+    {
+        $validator = Validator::make($data, [
+            'name'=>'required'
+        ]);
+        return $this->companyRepository->getCompanyByName($data['name']);
+    }
 }

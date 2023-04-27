@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class CompanyControllerTest extends TestCase
 {
-    public function test_add_new_company()
+    public function test_add_new_company_in_repository()
     {
         $company = new CompanyRepository(new Company());
         $data = [
@@ -23,7 +23,7 @@ class CompanyControllerTest extends TestCase
         $this->assertDatabaseHas('companies',['name'=>'nazwa']);
     }
 
-    public function test_get_company_by_nip()
+    public function test_get_company_by_nip_service()
     {
         $data =[
             'nip'=>'1-2-3-4',
@@ -32,4 +32,15 @@ class CompanyControllerTest extends TestCase
         $companyFromDb = $companyService->getCompanyByNip($data);
         $this->assertSame($companyFromDb->nip,'1234');
     }
+    public function test_get_company_by_name_service()
+    {
+        $data =[
+            'name'=>'test',
+        ];
+        $companyService = new CompanyService(new CompanyRepository(new Company()));
+        $companyFromDb = $companyService->getCompanyByName($data);
+        $this->assertSame($companyFromDb->name,$data['name']);
+    }
+
+
 }

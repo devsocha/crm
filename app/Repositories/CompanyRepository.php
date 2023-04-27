@@ -15,7 +15,7 @@ class CompanyRepository
 
     public function getAll()
     {
-        return $this->company->all();
+        return $this->company->paginate(10);
     }
 
     public function addNewCompany($data)
@@ -32,5 +32,10 @@ class CompanyRepository
     public function getCompanyByNip($nip)
     {
         return $this->company->where('nip',$nip)->first();
+    }
+
+    public function getCompanyByName(mixed $name)
+    {
+        return $this->company->where('name',$name)->first();
     }
 }

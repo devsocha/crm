@@ -24,4 +24,6 @@ Route::middleware('auth')->group(function (){
     Route::get('/logout', [\App\Http\Controllers\UserController::class,'logout'])->name('logout');
 
 });
-Route::get('/home', [\App\Http\Controllers\HomeController::class,'viewHomePage'])->name('home');
+Route::get('/strona-glowna', [\App\Http\Controllers\HomeController::class,'viewHomePage'])->name('home');
+Route::get('/firmy', [\App\Http\Controllers\CompanyController::class,'index'])->name('companies');
+Route::get('/kontakty', [\App\Http\Controllers\ContactController::class,'index'])->name('contacts');

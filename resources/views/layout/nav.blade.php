@@ -18,18 +18,23 @@
             </a>
         </div>
         <div class="row m-3" >
-            <a class="btn btn-primary" >
+            <a href="{{route('companies')}}"class="btn btn-primary" >
                 Firmy
             </a>
         </div>
         <div class="row m-3" >
-            <a href="#"class="btn btn-primary" >
+            <a href="{{route('contacts')}}"class="btn btn-primary" >
                 Wszystkie kontakty
             </a>
         </div>
         <div class="row m-3" >
             <a href="#" class="btn btn-success" >
                 Raporty
+            </a>
+        </div>
+        <div class="row m-3" >
+            <a href="#" class="btn btn-success" >
+                Użytkownicy
             </a>
         </div>
         <div class="row m-3" >

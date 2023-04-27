@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use App\Services\CompanyService;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class ContactController extends Controller
 {
-    protected $companyService;
-
-    public function __construct(CompanyService $companyService)
-    {
-        $this->companyService = $companyService;
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $companies = $this->companyService->getAll();
-        return view('company')->with(['companies'=>$companies]);
+        return view('contacts');
     }
 
     /**
@@ -43,7 +34,7 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show(Contact $contact)
     {
         //
     }
@@ -51,7 +42,7 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Company $company)
+    public function edit(Contact $contact)
     {
         //
     }
@@ -59,7 +50,7 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
@@ -67,7 +58,7 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Company $company)
+    public function destroy(Contact $contact)
     {
         //
     }
