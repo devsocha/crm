@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('zip_code');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

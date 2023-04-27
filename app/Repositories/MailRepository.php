@@ -10,7 +10,6 @@ class MailRepository
 
     public function sendMail($mail,$subject,$body)
     {
-
         Mail::to($mail)->send(new WebsiteMail($subject,$body));
     }
 }

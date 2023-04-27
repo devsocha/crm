@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [\App\Http\Controllers\UserController::class,'viewLoginPage'])->name('login');
+Route::get('/', [\App\Http\Controllers\UserController::class,'viewLoginPage'])->name('login');
 Route::post('/login/submit', [\App\Http\Controllers\UserController::class,'loginSubmit'])->name('login-submit');
 Route::get('/restart-hasla', [\App\Http\Controllers\UserController::class,'restartPasswordView'])->name('password.restart');
 Route::post('/restart-hasla', [\App\Http\Controllers\UserController::class,'restartPassword'])->name('password.restart-submit');
