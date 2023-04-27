@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Company;
 use App\Repositories\CompanyRepository;
+use App\Services\CompanyService;
 use Tests\TestCase;
 
 class CompanyControllerTest extends TestCase
@@ -24,10 +25,11 @@ class CompanyControllerTest extends TestCase
 
     public function test_get_company_by_nip()
     {
-        $nip = '1-2-3-4';
-        $nip = str_replace('-','',$nip);
-        $company = new CompanyRepository(new Company());
-        $companyFromDb = $company->getCompanyByNip($nip);
-        $this->assertSame($companyFromDb->nip,$nip);
+        $data =[
+            'nip'=>'1-2-3-4',
+        ];
+        $companyService = new CompanyService(new CompanyRepository(new Company()));
+        $companyFromDb = $companyService->getCompanyByNip($data);
+        $this->assertSame($companyFromDb->nip,'1234');
     }
 }

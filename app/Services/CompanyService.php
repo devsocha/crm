@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\CompanyRepository;
+use Illuminate\Support\Facades\Validator;
+
 
 class CompanyService
 {
@@ -16,5 +18,15 @@ class CompanyService
     public function getAll()
     {
         return $this->companyRepository->getAll();
+    }
+
+    public function getCompanyByNip(array $data)
+    {
+        $validator = Validator::make($data, [
+            'nip'=>'required'
+        ]);
+
+        $nip = str_replace('-','',$data['nip']);
+        return $this->companyRepository->getCompanyByNip($nip);
     }
 }
