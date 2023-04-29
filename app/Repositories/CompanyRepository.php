@@ -56,4 +56,9 @@ class CompanyRepository
     {
         return $this->company->where('id',$id)->first();
     }
+
+    public function deleteCompany($id)
+    {
+        $this->company->where('id',$id)->delete();
+    }
 }

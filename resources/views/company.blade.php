@@ -24,7 +24,7 @@
                         <td>
                             <a class="btn btn-primary" href="{{route('company.show',['id'=>$company->id])}}">Podgląd</a>
                             <a class="btn btn-secondary" href="{{route('company.edit',['id'=>$company->id])}}">Edytuj</a>
-                            <a class="btn btn-danger" href="#">Usuń</a>
+                            <a class="btn btn-danger" href="{{route('company.delete',['id'=>$company->id])}}">Usuń</a>
 
                         </td>
                     </tr>

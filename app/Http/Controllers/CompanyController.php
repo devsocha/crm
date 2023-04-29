@@ -109,8 +109,16 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
-        //
+        $date = [
+            'id'=>$id,
+        ];
+        try{
+            $this->companyService->deleteCompany($date);
+        }catch (\Exception $e){
+
+        }
+        return redirect()->route('companies');
     }
 }

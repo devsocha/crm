@@ -32,3 +32,4 @@ Route::post('/firmy-dodawanie-zatwierdzenie', [\App\Http\Controllers\CompanyCont
 Route::get('/firma/{id}', [\App\Http\Controllers\CompanyController::class,'show'])->name('company.show');
 Route::get('/firma-edytowanie/{id}', [\App\Http\Controllers\CompanyController::class,'edit'])->name('company.edit');
 Route::post('/firmy-edytowanie-zatwierdzenie', [\App\Http\Controllers\CompanyController::class,'update'])->name('companies.edit-submit');
+Route::get('/firma-usuwanie/{id}', [\App\Http\Controllers\CompanyController::class,'destroy'])->name('company.delete');

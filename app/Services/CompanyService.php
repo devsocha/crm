@@ -87,4 +87,12 @@ class CompanyService
     {
         return $this->companyRepository->getCompanyById($data['id']);
     }
+
+    public function deleteCompany($data)
+    {
+        Validator::make($data, [
+            'id'=>'required'
+        ]);
+        $this->companyRepository->deleteCompany($data['id']);
+    }
 }
