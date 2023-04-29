@@ -25,6 +25,7 @@ class CompanyService
         return $this->companyRepository->getAll();
     }
 
+
     /**
      * @param array $data
      * @return mixed
@@ -88,6 +89,10 @@ class CompanyService
         return $this->companyRepository->getCompanyById($data['id']);
     }
 
+    public function getAllCompanyContacts($data)
+    {
+        return $this->companyRepository->getAllCompanyContacts($data);
+    }
     public function deleteCompany($data)
     {
         Validator::make($data, [

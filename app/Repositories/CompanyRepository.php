@@ -18,6 +18,11 @@ class CompanyRepository
     {
         return $this->company->paginate(10);
     }
+    public function getAllCompanyContacts($data)
+    {
+        $company = $this->getCompanyById($data['id']);
+        return $company->contacts;
+    }
 
     public function addNewCompany($data)
     {

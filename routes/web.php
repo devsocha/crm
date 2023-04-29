@@ -33,3 +33,9 @@ Route::get('/firma/{id}', [\App\Http\Controllers\CompanyController::class,'show'
 Route::get('/firma-edytowanie/{id}', [\App\Http\Controllers\CompanyController::class,'edit'])->name('company.edit');
 Route::post('/firmy-edytowanie-zatwierdzenie', [\App\Http\Controllers\CompanyController::class,'update'])->name('companies.edit-submit');
 Route::get('/firma-usuwanie/{id}', [\App\Http\Controllers\CompanyController::class,'destroy'])->name('company.delete');
+Route::get('/firma/{id}/kontakt-dodawanie', [\App\Http\Controllers\ContactController::class,'create'])->name('conctact.add');
+Route::post('/firma/kontakt-dodawanie-zatwierdzenie', [\App\Http\Controllers\ContactController::class,'store'])->name('contact.add-submit');
+Route::get('/firma/kontakt/{id}', [\App\Http\Controllers\ContactController::class,'show'])->name('contact.show');
+Route::get('/firma/kontakt-edytowanie/{id}', [\App\Http\Controllers\ContactController::class,'edit'])->name('contact.edit');
+Route::post('/firma/kontakt-zatwierdzenie/{id}', [\App\Http\Controllers\ContactController::class,'update'])->name('contact.edit-submit');
+Route::get('/firma/kontakt-usuwanie/{id}', [\App\Http\Controllers\ContactController::class,'destroy'])->name('contact.delete');

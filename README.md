@@ -1,4 +1,4 @@
-CRM - APP (OOP, SOLID, DRY, TDD)
+CRM - APP (OOP, SOLID, DRY)
 
 ****** PROJECT DESC *******
 Application helps sales teams have all in one place.  

@@ -12,7 +12,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th style="width:70%" scope="col">Nazwa Firmy</th>
+                    <th style="width:60%" scope="col">Nazwa Firmy</th>
                     <th scope="col">Akcje</th>
                 </tr>
                 </thead>

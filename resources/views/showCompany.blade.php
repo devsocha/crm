@@ -33,4 +33,39 @@
             <a href="{{route('companies')}}" class="btn btn-secondary">Wróć do firm</a>
         </form>
     </div>
+    <div class="row mt-5 p-3">
+        <div class="col text-center">
+            <div>
+                <a class="btn btn-primary" href="{{route('conctact.add',['id'=>$company->id])}}">Dodaj kontakt</a>
+            </div>
+            @foreach($company->contacts as $contact)
+            <div>
+                <a href="{{route('contact.show',['id'=>$contact->id])}}" class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">{{$contact->name}}</a>
+            </div>
+            @endforeach
+
+        </div>
+        <div class="col text-center">
+            <div>
+                <a class="btn btn-primary" href="">Dodaj dokument</a>
+            </div>
+            <div>
+                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
+            </div>
+            <div>
+                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
+            </div>
+        </div>
+        <div class="col text-center">
+            <div>
+                <a class="btn btn-primary" href="">Dodaj projekt</a>
+            </div>
+            <div>
+                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
+            </div>
+            <div>
+                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
+            </div>
+        </div>
+    </div>
 @endsection
