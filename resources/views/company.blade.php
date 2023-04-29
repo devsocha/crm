@@ -1,10 +1,10 @@
 @extends('layout.nav')
-@section('title','companies')
+@section('title','Firmy')
 
 @section('content')
 
         <div class="row m-5">
-            <a class="btn btn-primary" href="" >Dodaj firmę</a>
+            <a class="btn btn-primary" href="{{route('companies.add')}}" >Dodaj firmę</a>
         </div>
 
         <div class="row m-5">
@@ -22,8 +22,10 @@
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$company->name}}</td>
                         <td>
-                            <a class="btn btn-danger" href="#">Usuń</a>
+                            <a class="btn btn-primary" href="#">Podgląd</a>
                             <a class="btn btn-secondary" href="#">Edytuj</a>
+                            <a class="btn btn-danger" href="#">Usuń</a>
+
                         </td>
                     </tr>
                 @endforeach

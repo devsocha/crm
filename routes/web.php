@@ -27,3 +27,4 @@ Route::middleware('auth')->group(function (){
 Route::get('/strona-glowna', [\App\Http\Controllers\HomeController::class,'viewHomePage'])->name('home');
 Route::get('/firmy', [\App\Http\Controllers\CompanyController::class,'index'])->name('companies');
 Route::get('/kontakty', [\App\Http\Controllers\ContactController::class,'index'])->name('contacts');
+Route::get('/firmy-dodawanie', [\App\Http\Controllers\CompanyController::class,'create'])->name('companies.add');

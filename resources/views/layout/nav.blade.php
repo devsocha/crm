@@ -28,6 +28,11 @@
             </a>
         </div>
         <div class="row m-3" >
+            <a href="#"class="btn btn-primary" >
+                Ustawienia
+            </a>
+        </div>
+        <div class="row m-3" >
             <a href="#" class="btn btn-success" >
                 Raporty
             </a>

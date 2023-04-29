@@ -1,5 +1,5 @@
 @extends('layout.nav')
-@section('title','contacts')
+@section('title','Kontakty')
 
 @section('content')
 
