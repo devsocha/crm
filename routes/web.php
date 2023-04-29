@@ -28,3 +28,7 @@ Route::get('/strona-glowna', [\App\Http\Controllers\HomeController::class,'viewH
 Route::get('/firmy', [\App\Http\Controllers\CompanyController::class,'index'])->name('companies');
 Route::get('/kontakty', [\App\Http\Controllers\ContactController::class,'index'])->name('contacts');
 Route::get('/firmy-dodawanie', [\App\Http\Controllers\CompanyController::class,'create'])->name('companies.add');
+Route::post('/firmy-dodawanie-zatwierdzenie', [\App\Http\Controllers\CompanyController::class,'store'])->name('companies.add-submit');
+Route::get('/firma/{id}', [\App\Http\Controllers\CompanyController::class,'show'])->name('company.show');
+Route::get('/firma-edytowanie/{id}', [\App\Http\Controllers\CompanyController::class,'edit'])->name('company.edit');
+Route::post('/firmy-edytowanie-zatwierdzenie', [\App\Http\Controllers\CompanyController::class,'update'])->name('companies.edit-submit');

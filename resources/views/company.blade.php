@@ -22,8 +22,8 @@
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$company->name}}</td>
                         <td>
-                            <a class="btn btn-primary" href="#">Podgląd</a>
-                            <a class="btn btn-secondary" href="#">Edytuj</a>
+                            <a class="btn btn-primary" href="{{route('company.show',['id'=>$company->id])}}">Podgląd</a>
+                            <a class="btn btn-secondary" href="{{route('company.edit',['id'=>$company->id])}}">Edytuj</a>
                             <a class="btn btn-danger" href="#">Usuń</a>
 
                         </td>

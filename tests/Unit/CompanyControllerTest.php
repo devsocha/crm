@@ -9,17 +9,17 @@ use Tests\TestCase;
 
 class CompanyControllerTest extends TestCase
 {
-    public function test_add_new_company_in_repository()
+    public function test_add_new_company_in_service()
     {
-        $company = new CompanyRepository(new Company());
+        $companyService = new CompanyService(new CompanyRepository(new Company()));
         $data = [
             'name'=>'test',
-            'nip'=>'1234',
+            'nip'=>'1-2-3-4',
             'city'=>'test',
             'street'=>'test',
             'zipCode'=>'test',
         ];
-        $company->addNewCompany($data);
+        $companyService->addNewCompany($data);
         $this->assertDatabaseHas('companies',['name'=>'nazwa']);
     }
 
@@ -40,6 +40,22 @@ class CompanyControllerTest extends TestCase
         $companyService = new CompanyService(new CompanyRepository(new Company()));
         $companyFromDb = $companyService->getCompanyByName($data);
         $this->assertSame($companyFromDb->name,$data['name']);
+    }
+    public function test_get_company_by_ID_service()
+    {
+        $data =[
+            'id'=>17,
+        ];
+        $companyService = new CompanyService(new CompanyRepository(new Company()));
+        $companyFromDb = $companyService->getCompanyById($data);
+        $this->assertSame($companyFromDb->name,'test');
+    }
+    public function test_get_company_by_ID_repo()
+    {
+        $id = 17;
+        $companyRepo = new CompanyRepository(new Company());
+        $companyFromDb = $companyRepo->getCompanyById($id);
+        $this->assertSame($companyFromDb->name,'test');
     }
 
 

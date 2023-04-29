@@ -37,31 +37,73 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'name',
+            'nip',
+            'street',
+            'city',
+            'zipCode',
+        ]);
+        $result = ['status'=>200];
+        try{
+            $result['data'] = $this->companyService->addNewCompany($data);
+        }catch (\Exception $e)
+        {
+            $result = [
+                'status'=> 500,
+                'message'=>$e->getMessage(),
+            ];
+        }
+        return view('showCompany')->with(['company'=>$result['data']]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show($id)
     {
-        //
+        $data = ['id'=>$id];
+        $company = $this->companyService->getCompanyById($data);
+        return view('showCompany')->with(['company'=>$company]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        $data = ['id'=>$id];
+        $company = $this->companyService->getCompanyById($data);
+        return view('editCompany')->with(['company'=>$company]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request)
     {
-        //
+        $data = $request->only([
+            'id',
+            'name',
+            'nip',
+            'street',
+            'city',
+            'zipCode',
+        ]);
+        $result = ['status'=>200];
+        try{
+            $result['data'] = $this->companyService->updateCompany($data);
+        }catch (\Exception $e)
+        {
+            $result = [
+                'status'=> 500,
+                'message'=>$e->getMessage(),
+            ];
+            echo $result['message'];
+        }
+        return view('showCompany')->with(['company'=>$result['data']]);
+
     }
 
     /**

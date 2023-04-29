@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyRepository
 {
@@ -27,6 +28,19 @@ class CompanyRepository
         $company->street = $data['street'];
         $company->zip_code = $data['zipCode'];
         $company->save();
+        return $company->fresh();
+    }
+
+    public function updateCompany($data)
+    {
+        $company = $this->company->where('id',$data['id'])->first();
+        $company->name = $data['name'];
+        $company->nip = $data['nip'];
+        $company->city = $data['city'];
+        $company->street = $data['street'];
+        $company->zip_code = $data['zipCode'];
+        $company->save();
+        return $company->fresh();
     }
 
     public function getCompanyByNip($nip)
@@ -37,5 +51,9 @@ class CompanyRepository
     public function getCompanyByName(mixed $name)
     {
         return $this->company->where('name',$name)->first();
+    }
+    public function getCompanyById($id)
+    {
+        return $this->company->where('id',$id)->first();
     }
 }
