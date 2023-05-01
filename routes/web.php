@@ -39,3 +39,4 @@ Route::get('/firma/kontakt/{id}', [\App\Http\Controllers\ContactController::clas
 Route::get('/firma/kontakt-edytowanie/{id}', [\App\Http\Controllers\ContactController::class,'edit'])->name('contact.edit');
 Route::post('/firma/kontakt-zatwierdzenie/{id}', [\App\Http\Controllers\ContactController::class,'update'])->name('contact.edit-submit');
 Route::get('/firma/kontakt-usuwanie/{id}', [\App\Http\Controllers\ContactController::class,'destroy'])->name('contact.delete');
+Route::post('/wyszukane-kontakty', [\App\Http\Controllers\CompanyController::class,'companiesByNameWithNoFullName'])->name('contactsBySearch');

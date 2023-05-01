@@ -13,6 +13,11 @@ class ContactService
      $this->contactRepository = $contactRepository;
     }
 
+    public function getAllWithPagination()
+    {
+        return $this->contactRepository->getAll();
+    }
+
     public function addNewContact($data)
     {
         Validator::make($data,[

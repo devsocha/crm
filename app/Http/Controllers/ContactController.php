@@ -20,8 +20,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contacts');
+        $contacts = $this->contactService->getAllWithPagination();
+        return view('contacts')->with(['contacts'=>$contacts]);
+
+
     }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -24,6 +24,13 @@ class CompanyController extends Controller
         return view('company')->with(['companies'=>$companies]);
     }
 
+    public function companiesByNameWithNoFullName(Request $request)
+    {
+        $text = $request->text;
+        $companies = $this->companyService->getByCompanyName($text);
+        return view('contactsSearch')->with(['companies'=>$companies]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

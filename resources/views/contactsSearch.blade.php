@@ -9,7 +9,6 @@
             <input class="col-9 form-label" name="text" type="text" placeholder="Wpisz firmę">
             <input class="col-2 btn btn-primary m-2 p-2" type="submit" value="Wyszukaj">
         </form>
-
     </div>
 
     <div class="row m-5">
@@ -25,7 +24,9 @@
             </thead>
             <tbody>
 
-            @foreach($contacts as $contact)
+            @foreach($companies as $company)
+
+                @foreach($company->contacts as $contact)
                 <tr>
                     <th scope="row"></th>
                     <td>{{$contact->name}}</td>
@@ -39,8 +40,9 @@
                         <a class="btn btn-success" href="#">Przejdź do firmy</a>
                     </td>
                 </tr>
+                @endforeach
             @endforeach
-            {{$contacts->links()}}
+
             </tbody>
         </table>
 

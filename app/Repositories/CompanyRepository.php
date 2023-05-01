@@ -23,7 +23,10 @@ class CompanyRepository
         $company = $this->getCompanyById($data['id']);
         return $company->contacts;
     }
-
+    public function getByNotFullName($text)
+    {
+        return $this->company->where('name','LIKE','%'.$text.'%')->get();
+    }
     public function addNewCompany($data)
     {
         $company = $this->company;

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Company;
 use App\Repositories\CompanyRepository;
+use App\Repositories\ContactRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,10 +12,11 @@ use Illuminate\Support\Facades\Validator;
 class CompanyService
 {
     protected $companyRepository;
-
-    public function __construct(CompanyRepository $companyRepository)
+    protected $contactRepository;
+    public function __construct(CompanyRepository $companyRepository, ContactRepository $contactRepository)
     {
         $this->companyRepository = $companyRepository;
+        $this->contactRepository = $contactRepository;
     }
 
     /**
@@ -98,6 +100,14 @@ class CompanyService
         Validator::make($data, [
             'id'=>'required'
         ]);
+        $this->contactRepository->deleteByCompany($data['id']);
         $this->companyRepository->deleteCompany($data['id']);
+    }
+
+    public function getByCompanyName(string $text)
+    {
+        $company = $this->companyRepository->getByNotFullName($text);
+        return $company;
+
     }
 }

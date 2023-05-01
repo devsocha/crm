@@ -31,7 +31,7 @@ class ContactRepository
     }
     public function getAll()
     {
-        return $this->contact->all();
+        return $this->contact->paginate(10);
     }
     public function delete($id)
     {
@@ -39,6 +39,11 @@ class ContactRepository
         $idCompany = $deletedUser->company_id;
         $deletedUser->delete();
         return $idCompany;
+    }
+
+    public function deleteByCompany($companyId)
+    {
+        $this->contact->where('company_id',$companyId)->delete();
     }
 
     public function update(array $data)
