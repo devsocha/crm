@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="row m-3" >
-            <a href="#"class="btn btn-primary" >
+            <a href="{{route('settings')}}"class="btn btn-primary" >
                 Ustawienia
             </a>
         </div>

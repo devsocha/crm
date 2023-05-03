@@ -26,11 +26,32 @@ class UserRepository
     {
         return $this->user->where('email',$mail)->first();
     }
+
+    public function getUserById($id)
+    {
+        return $this->user->where('id',$id)->first();
+    }
     public function count()
     {
         return $this->user->count();
     }
+    public function updateUserByUser($data)
+    {
+        $user = $this->user->where('id',$data['id'])->first();
+        $user->login = $data['login'];
+        $user->name = $data['name'];
+        $user->surname = $data['surname'];
+        $user->email = $data['email'];
+        $user->save();
+        return $user->fresh();
+    }
 
+    public function updatePassword($data)
+    {
+        $user = $this->user->where('id',$data['id'])->first();
+        $user->password = Hash::make($data['password']);
+        $user->save();
+    }
     public function createFirstUser()
     {
        $user = $this->user;

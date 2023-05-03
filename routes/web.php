@@ -40,3 +40,5 @@ Route::get('/firma/kontakt-edytowanie/{id}', [\App\Http\Controllers\ContactContr
 Route::post('/firma/kontakt-zatwierdzenie/{id}', [\App\Http\Controllers\ContactController::class,'update'])->name('contact.edit-submit');
 Route::get('/firma/kontakt-usuwanie/{id}', [\App\Http\Controllers\ContactController::class,'destroy'])->name('contact.delete');
 Route::post('/wyszukane-kontakty', [\App\Http\Controllers\CompanyController::class,'companiesByNameWithNoFullName'])->name('contactsBySearch');
+Route::get('/ustawienia',[\App\Http\Controllers\SettingsController::class,'index'])->name('settings');
+Route::post('/ustawienia-zatwierdzanie',[\App\Http\Controllers\SettingsController::class,'update'])->name('settings.update');

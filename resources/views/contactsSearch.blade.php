@@ -37,7 +37,7 @@
                         {{$contact->phone}}
                     </td>
                     <td>
-                        <a class="btn btn-success" href="#">Przejdź do firmy</a>
+                        <a class="btn btn-success" href="{{route('company.show',['id'=>$company->id])}}">Przejdź do firmy</a>
                     </td>
                 </tr>
                 @endforeach
