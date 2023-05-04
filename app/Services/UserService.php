@@ -25,7 +25,31 @@ class UserService
             $this->userRepository->createFirstUser();
         }
     }
+    public function getUsers()
+    {
+        return $this->userRepository->getAll();
+    }
 
+    public function giveAdmin($id)
+    {
+        $this->userRepository->giveAdmin($id);
+    }
+    public function getUserByNameAndSurname($text)
+    {
+        $data = explode(' ',$text);
+        if(count($data)>1)
+        {
+            return $this->userRepository->findUserByNameAndSurname($data['0'],$data['1']);
+        }
+        else
+        {
+            return $this->userRepository->findUserByNameAndSurname($data['0']);
+        }
+    }
+    public function takeAdmin($id)
+    {
+        $this->userRepository->takeAdmin($id);
+    }
     public function updateUserByUser($data)
     {
         Validator::make($data,[

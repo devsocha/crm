@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="row m-3" >
-            <a href="#" class="btn btn-success" >
+            <a href="{{route('users')}}" class="btn btn-success" >
                 Użytkownicy
             </a>
         </div>

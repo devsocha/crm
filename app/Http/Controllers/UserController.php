@@ -69,8 +69,67 @@ class UserController extends Controller
                 'message'=>$e->getMessage(),
                 ];
         }
-        dd($result);
-//        return redirect()->route('login');
+        return redirect()->route('login');
+    }
+    public function usersView()
+    {
+        try{
+            $users = $this->userService->getUsers();
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('users',['users'=>$users]);
+    }
+
+    public function giveAdmin($id)
+    {
+        try{
+            $this->userService->giveAdmin($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return redirect()->back();
+    }
+
+    public function findUserByNameAndSurname(Request $request)
+    {
+        $text = $request->text;
+        try{
+            $users = $this->userService->getUserByNameAndSurname($text);
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('users',['users'=>$users]);
+    }
+
+    public function takeAdmin($id)
+    {
+        try{
+            $this->userService->takeAdmin($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return redirect()->back();
+    }
+    public function createNewUser(Request $request)
+    {
+        $data = $request->only(['email']);
+        $result = ['status'=>200];
+        try
+        {
+            $result['data'] = 0;
+        }catch (\Exception $e)
+        {
+            $result =[
+                'status'=>500,
+                'message'=>$e->getMessage(),
+            ];
+        }
+        return redirect()->route('login');
     }
     public function logout()
     {

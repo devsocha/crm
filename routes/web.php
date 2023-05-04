@@ -42,3 +42,8 @@ Route::get('/firma/kontakt-usuwanie/{id}', [\App\Http\Controllers\ContactControl
 Route::post('/wyszukane-kontakty', [\App\Http\Controllers\CompanyController::class,'companiesByNameWithNoFullName'])->name('contactsBySearch');
 Route::get('/ustawienia',[\App\Http\Controllers\SettingsController::class,'index'])->name('settings');
 Route::post('/ustawienia-zatwierdzanie',[\App\Http\Controllers\SettingsController::class,'update'])->name('settings.update');
+Route::get('/ustawienia-uzytkownicy',[\App\Http\Controllers\UserController::class,'usersView'])->name('users');
+Route::post('/ustawienia-uzytkownicy-zatwierdzenie',[\App\Http\Controllers\UserController::class,'createNewUser'])->name('users.create');
+Route::get('/ustawienia-uzytkownicy/nadawanie-admina/{id}',[\App\Http\Controllers\UserController::class,'giveAdmin'])->name('users.admin');
+Route::get('/ustawienia-uzytkownicy/nadawanie-usera/{id}',[\App\Http\Controllers\UserController::class,'takeAdmin'])->name('users.user');
+Route::post('/ustawienia-uzytkownicy/wyszukiwanie',[\App\Http\Controllers\UserController::class,'findUserByNameAndSurname'])->name('users.find');

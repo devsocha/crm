@@ -27,7 +27,7 @@
 
             @foreach($contacts as $contact)
                 <tr>
-                    <th scope="row"></th>
+                    <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$contact->name}}</td>
                     <td>
                         {{$contact->email}}
@@ -40,7 +40,7 @@
                     </td>
                 </tr>
             @endforeach
-            {{$contacts->links()}}
+            {!! $contacts->links() !!}
             </tbody>
         </table>
 

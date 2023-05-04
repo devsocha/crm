@@ -46,6 +46,32 @@ class UserRepository
         return $user->fresh();
     }
 
+    public function giveAdmin($id)
+    {
+        $user = $this->user->where('id',$id)->first();
+        $user->role = 1;
+        $user->save();
+    }
+    public function takeAdmin($id)
+    {
+        $user = $this->user->where('id',$id)->first();
+        $user->role = 0;
+        $user->save();
+    }
+
+    public function findUserByNameAndSurname($name = '', $surname = '')
+    {
+        return $this->user->where('name','LIKE','%'.$name.'%')->orwhere('surname','LIKE','%'.$surname.'%')->paginate(5);
+    }
+    public function getAll()
+    {
+        return $this->user->paginate(5);
+    }
+    public function updateTokenByMail($email,$token){
+        $user = $this->user->where('email',$email)->first();
+        $user->token = $token;
+        $user->save();
+    }
     public function updatePassword($data)
     {
         $user = $this->user->where('id',$data['id'])->first();

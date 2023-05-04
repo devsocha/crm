@@ -11,5 +11,4 @@
         <button type="submit" class="btn btn-primary">Resetuj hasło</button>
         <a href="{{route('login')}}" class="btn btn-secondary">Wróć</a>
     </form>
-
 </div>

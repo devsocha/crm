@@ -27,6 +27,7 @@ class MailService
             $url = url('/restart-hasla/');
             $token = hash('sha256',$email.time());
             $link =  $url.'/'.$token;
+            $this->userRepository->updateTokenByMail($user->email,$token);
             $subject = 'Restart twojego hasła w witrynie DevSocha';
             $body = 'Cześć, <br><br> Aby zrestartować hasło w naszej witrynie kliknij w poniższy link<br><a href="'.$link.'">LINK</a><br><br> Pozdrawiamy,<br>Cały Zespół DevSocha';
             $this->mailRepository->sendMail($email,$subject,$body);
