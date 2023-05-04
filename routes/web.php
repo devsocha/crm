@@ -47,3 +47,5 @@ Route::post('/ustawienia-uzytkownicy-zatwierdzenie',[\App\Http\Controllers\UserC
 Route::get('/ustawienia-uzytkownicy/nadawanie-admina/{id}',[\App\Http\Controllers\UserController::class,'giveAdmin'])->name('users.admin');
 Route::get('/ustawienia-uzytkownicy/nadawanie-usera/{id}',[\App\Http\Controllers\UserController::class,'takeAdmin'])->name('users.user');
 Route::post('/ustawienia-uzytkownicy/wyszukiwanie',[\App\Http\Controllers\UserController::class,'findUserByNameAndSurname'])->name('users.find');
+Route::get('/ustawienia-uzytkownicy/dodawanie',[\App\Http\Controllers\UserController::class,'addUser'])->name('users.add');
+Route::post('/ustawienia-uzytkownicy/dodawanie-zatwierdzenie',[\App\Http\Controllers\UserController::class,'addUserSubmit'])->name('users.add-submit');

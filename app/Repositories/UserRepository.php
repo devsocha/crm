@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
-    protected $user;
+    protected User $user;
 
     public function __construct(User $user)
     {
         $this->user = $user;
     }
-    public function login($data)
+    public function login($data): bool
     {
         return Auth::attempt($data);
     }
-    public function logout()
+    public function logout(): void
     {
          Auth::logout();
     }
@@ -46,44 +46,57 @@ class UserRepository
         return $user->fresh();
     }
 
-    public function giveAdmin($id)
+    public function giveAdmin($id): void
     {
         $user = $this->user->where('id',$id)->first();
         $user->role = 1;
         $user->save();
     }
-    public function takeAdmin($id)
+    public function takeAdmin($id): void
     {
         $user = $this->user->where('id',$id)->first();
         $user->role = 0;
         $user->save();
     }
 
-    public function findUserByNameAndSurname($name = '', $surname = '')
+    public function findUserByNameAndSurname($name = null, $surname = null)
     {
-        return $this->user->where('name','LIKE','%'.$name.'%')->orwhere('surname','LIKE','%'.$surname.'%')->paginate(5);
+        return $this->user->where('name','LIKE','%'.$name.'%')->where('surname','LIKE','%'.$surname.'%')->paginate(5);
     }
     public function getAll()
     {
         return $this->user->paginate(5);
     }
-    public function updateTokenByMail($email,$token){
+    public function updateTokenByMail($email,$token): void
+    {
         $user = $this->user->where('email',$email)->first();
         $user->token = $token;
         $user->save();
     }
-    public function updatePassword($data)
+    public function updatePassword($data): void
     {
         $user = $this->user->where('id',$data['id'])->first();
         $user->password = Hash::make($data['password']);
         $user->save();
     }
-    public function createFirstUser()
+    public function createFirstUser(): void
     {
        $user = $this->user;
        $user->login = 'admin';
        $user->password = Hash::make('admin');
        $user->role = 1;
        $user->save();
+    }
+
+    public function addUser($data): void
+    {
+        $user = $this->user;
+        $user->login = $data['login'];
+        $user->name = $data['name'];
+        $user->surname = $data['surname'];
+        $user->email = $data['email'];
+        $user->password = Hash::make( $data['password']);
+        $user->role = 0;
+        $user->save();
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserService
 {
-    protected $userRepository;
+    protected UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)
     {
@@ -17,7 +17,7 @@ class UserService
     {
         return $this->userRepository->getUserById($id);
     }
-    public function firstRunApp()
+    public function firstRunApp(): void
     {
         $count = $this->userRepository->count();
         if($count==0)
@@ -30,7 +30,7 @@ class UserService
         return $this->userRepository->getAll();
     }
 
-    public function giveAdmin($id)
+    public function giveAdmin($id): void
     {
         $this->userRepository->giveAdmin($id);
     }
@@ -46,11 +46,16 @@ class UserService
             return $this->userRepository->findUserByNameAndSurname($data['0']);
         }
     }
-    public function takeAdmin($id)
+    public function takeAdmin($id): void
     {
         $this->userRepository->takeAdmin($id);
     }
-    public function updateUserByUser($data)
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function updateUserByUser(array $data)
     {
         Validator::make($data,[
             'login'=>'required',
@@ -69,9 +74,14 @@ class UserService
         return $this->userRepository->updateUserByUser($data);
 
     }
-    public function login($data)
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function login(array $data): bool
     {
-        $validator= Validator::make($data,[
+        Validator::make($data,[
             'login'=>'required',
             'password'=>'required',
         ]);
@@ -84,8 +94,24 @@ class UserService
         }
         return $message;
     }
-    public function logout()
+    public function logout(): void
     {
         $this->userRepository->logout();
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function addNewUser(array $data): void
+    {
+        Validator::make($data,[
+            'login'=>'required',
+            'name'=>'required',
+            'surname'=>'required',
+            'email'=>'required | email',
+            'password'=>'required'
+        ]);
+        $this->userRepository->addUser($data);
     }
 }

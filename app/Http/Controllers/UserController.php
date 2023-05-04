@@ -90,7 +90,7 @@ class UserController extends Controller
         {
 
         }
-        return redirect()->back();
+        return redirect()->route('users');
     }
 
     public function findUserByNameAndSurname(Request $request)
@@ -113,7 +113,7 @@ class UserController extends Controller
         {
 
         }
-        return redirect()->back();
+        return redirect()->route('users');
     }
     public function createNewUser(Request $request)
     {
@@ -135,5 +135,28 @@ class UserController extends Controller
     {
         $this->userService->logout();
         return redirect()->route('login');
+    }
+
+    public function addUser()
+    {
+        return view('usersAdd');
+    }
+
+    public function addUserSubmit(Request $request)
+    {
+        $data = $request->only([
+            'login',
+            'name',
+            'surname',
+            'email',
+            'password',
+        ]);
+        try{
+            $this->userService->addNewUser($data);
+        }catch (\Exception $e)
+        {
+
+        }
+        return redirect()->route('users');
     }
 }

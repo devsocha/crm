@@ -12,7 +12,7 @@
     </div>
 
     <div class="row m-5">
-        <a class="btn btn-primary" href="" >Dodaj użytkownika</a>
+        <a class="btn btn-primary" href="{{route('users.add')}}" >Dodaj użytkownika</a>
     </div>
 
     <div class="row m-5">
