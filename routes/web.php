@@ -49,3 +49,5 @@ Route::get('/ustawienia-uzytkownicy/nadawanie-usera/{id}',[\App\Http\Controllers
 Route::post('/ustawienia-uzytkownicy/wyszukiwanie',[\App\Http\Controllers\UserController::class,'findUserByNameAndSurname'])->name('users.find');
 Route::get('/ustawienia-uzytkownicy/dodawanie',[\App\Http\Controllers\UserController::class,'addUser'])->name('users.add');
 Route::post('/ustawienia-uzytkownicy/dodawanie-zatwierdzenie',[\App\Http\Controllers\UserController::class,'addUserSubmit'])->name('users.add-submit');
+Route::get('/ustawienia-uzytkownicy/informacje/{id}',[\App\Http\Controllers\UserController::class,'userView'])->name('user.show');
+Route::get('/ustawienia-uzytkownicy/usuwanie/{id}',[\App\Http\Controllers\UserController::class,'deleteUser'])->name('user.delete');

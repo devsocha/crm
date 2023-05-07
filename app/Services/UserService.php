@@ -114,4 +114,9 @@ class UserService
         ]);
         $this->userRepository->addUser($data);
     }
+
+    public function deleteUser($id)
+    {
+        $this->userRepository->delete($id);
+    }
 }

@@ -82,6 +82,17 @@ class UserController extends Controller
         return view('users',['users'=>$users]);
     }
 
+    public function userView($id)
+    {
+        try{
+            $user = $this->userService->getUserById($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('showUsers',['user'=>$user]);
+    }
+
     public function giveAdmin($id)
     {
         try{
@@ -153,6 +164,16 @@ class UserController extends Controller
         ]);
         try{
             $this->userService->addNewUser($data);
+        }catch (\Exception $e)
+        {
+
+        }
+        return redirect()->route('users');
+    }
+    public function deleteUser($id)
+    {
+        try {
+            $this->userService->deleteUser($id);
         }catch (\Exception $e)
         {
 

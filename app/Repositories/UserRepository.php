@@ -99,4 +99,9 @@ class UserRepository
         $user->role = 0;
         $user->save();
     }
+
+    public function delete($id)
+    {
+        $this->user->where('id',$id)->delete();
+    }
 }

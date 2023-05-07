@@ -35,7 +35,7 @@
                         @if($user->role == 1)Admin @else User @endif
                     </td>
                     <td style="width: 50%">
-                        <a class="btn btn-success" href="">Przejdź do usera</a>
+                        <a class="btn btn-success" href="{{route('user.show',['id'=>$user->id])}}" >Przejdź do usera</a>
                         @if($user->role == 1)<a class="btn btn-success" href="{{route('users.user',['id'=>$user->id])}}">Odbierz admina</a>@else <a class="btn btn-success" href="{{route('users.admin',['id'=>$user->id])}}">Nadaj admina</a>@endif
                     </td>
                 </tr>
