@@ -32,10 +32,15 @@ protected $projectRepository;
     public function getProject($id)
     {
         $project = $this->projectRepository->get($id);
-        $newStartDate = new \DateTime($project->start_date);
-        $project->start_date = $newStartDate->format('d.m.Y');
-        $newEndDate = new \DateTime($project->end_date);
-        $project->end_date = $newEndDate->format('d.m.Y');
+        if($project->start_date){
+            $newStartDate = new \DateTime($project->start_date);
+            $project->start_date = $newStartDate->format('d.m.Y');
+
+        }
+        if($project->end_date){
+            $newEndDate = new \DateTime($project->end_date);
+            $project->end_date = $newEndDate->format('d.m.Y');
+        }
         return $project;
     }
     public function deleteProject($id)

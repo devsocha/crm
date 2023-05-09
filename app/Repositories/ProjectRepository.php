@@ -49,23 +49,6 @@ class ProjectRepository
     {
         $this->project->where('id',$id)->delete();
     }
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function update(array $data)
-    {
-        $project = $this->project->where('id',$data['id'])->update([
-            'name'=>$data['name'],
-            'price_buy'=>$data['price_buy'],
-            'price_sell'=>$data['price_sell'],
-            'start_date'=>$data['start_date'],
-            'end_date'=>$data['end_date'],
-        ]);
-        return $project;
-    }
-
     /**
      * @param $id
      * @return mixed

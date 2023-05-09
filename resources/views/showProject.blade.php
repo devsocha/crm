@@ -26,8 +26,17 @@
                 <label for="end_date" class="form-label">Planowana data zakończenia</label>
                 <input type="text" name="end_date" value="{{$project->end_date}}" class="form-control" id="end_date" disabled>
             </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" name="end_date" value="{{$project->status}}" class="form-control" id="status" disabled>
+            </div>
+            <a href="{{route('company.show',['id'=>$project->company_id])}}" class="btn btn-primary">Edytuj projekt</a>
             <a href="{{route('company.show',['id'=>$project->company_id])}}" class="btn btn-secondary">Wróć</a>
             <a href="{{route('project.delete',['id'=>$project->id])}}" class="btn btn-danger">Usuń</a>
+            <br><br>
+            <a href="" class="btn btn-success">Zrealizuj</a>
+            <a href="" class="btn btn-secondary">Wstrzymaj</a>
+
 
         </form>
     </div>
