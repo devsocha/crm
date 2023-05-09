@@ -51,3 +51,8 @@ Route::get('/ustawienia-uzytkownicy/dodawanie',[\App\Http\Controllers\UserContro
 Route::post('/ustawienia-uzytkownicy/dodawanie-zatwierdzenie',[\App\Http\Controllers\UserController::class,'addUserSubmit'])->name('users.add-submit');
 Route::get('/ustawienia-uzytkownicy/informacje/{id}',[\App\Http\Controllers\UserController::class,'userView'])->name('user.show');
 Route::get('/ustawienia-uzytkownicy/usuwanie/{id}',[\App\Http\Controllers\UserController::class,'deleteUser'])->name('user.delete');
+Route::get('/firma/{id}/projekt-dodaj',[\App\Http\Controllers\ProjectController::class,'create'])->name('project.add');
+Route::post('/firma/{id}/projekt-dodaj-zatwierdzenie',[\App\Http\Controllers\ProjectController::class,'store'])->name('project.add-submit');
+Route::get('/firma/projekt/{id}',[\App\Http\Controllers\ProjectController::class,'show'])->name('project.show');
+Route::get('/firma/projekt-usun/{id}',[\App\Http\Controllers\ProjectController::class,'destroy'])->name('project.delete');
+Route::get('/firma/projekt/{id}/edycja',[\App\Http\Controllers\ProjectController::class,'edit'])->name('project.edit');

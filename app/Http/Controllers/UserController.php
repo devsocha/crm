@@ -23,7 +23,7 @@ class UserController extends Controller
             $this->userService->firstRunApp();
         }catch (\Exception $e)
         {
-            throw new \Exception('Błąd bazy danych');
+//            throw new \Exception('Błąd bazy danych');
         }
 
         return view('login');

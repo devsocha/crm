@@ -58,14 +58,13 @@
         </div>
         <div class="col text-center">
             <div>
-                <a class="btn btn-primary" href="">Dodaj projekt</a>
+                <a class="btn btn-primary" href="{{route('project.add',['id'=>$company->id])}}">Dodaj projekt</a>
             </div>
+            @foreach($company->projects as $project)
             <div>
-                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
+                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="{{route('project.show',['id'=>$project->id])}}">{{$project->name}}</a>
             </div>
-            <div>
-                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

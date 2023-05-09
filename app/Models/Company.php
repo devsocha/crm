@@ -21,4 +21,9 @@ class Company extends Model
     {
         return $this->hasMany(Contact::class,'company_id','id');
     }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class,'company_id','id');
+    }
 }
