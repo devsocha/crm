@@ -56,3 +56,4 @@ Route::post('/firma/{id}/projekt-dodaj-zatwierdzenie',[\App\Http\Controllers\Pro
 Route::get('/firma/projekt/{id}',[\App\Http\Controllers\ProjectController::class,'show'])->name('project.show');
 Route::get('/firma/projekt-usun/{id}',[\App\Http\Controllers\ProjectController::class,'destroy'])->name('project.delete');
 Route::get('/firma/projekt/{id}/edycja',[\App\Http\Controllers\ProjectController::class,'edit'])->name('project.edit');
+Route::post('/firma/projekt/{id}/edycja-zatwierdzenie',[\App\Http\Controllers\ProjectController::class,'update'])->name('project.edit-submit');

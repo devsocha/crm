@@ -32,20 +32,44 @@ protected $projectRepository;
     public function getProject($id)
     {
         $project = $this->projectRepository->get($id);
-        if($project->start_date){
-            $newStartDate = new \DateTime($project->start_date);
-            $project->start_date = $newStartDate->format('d.m.Y');
-
+        if(isset($project->start_date))
+        {
+            $project->start_date = $this->projectRepository->changeDateFormat($project->start_date);
         }
-        if($project->end_date){
-            $newEndDate = new \DateTime($project->end_date);
-            $project->end_date = $newEndDate->format('d.m.Y');
+        if(isset($project->end_date))
+        {
+            $project->end_date = $this->projectRepository->changeDateFormat($project->end_date);
         }
         return $project;
     }
     public function deleteProject($id)
     {
         $this->projectRepository->delete($id);
+    }
+    public function updateProject($id, $data)
+    {
+        Validator::make($data,[
+            'name'=>'required',
+        ]);
+        $this->projectRepository->updateName($id,$data['name']);
+        if(!is_null($data['start_date']))
+        {
+            $this->projectRepository->updateStartDate($id,$data['start_date']);
+        }
+
+        if(!is_null($data['end_date']))
+        {
+            $this->projectRepository->updateEndDate($id,$data['end_date']);
+        }
+        if(!is_null($data['price_buy']))
+        {
+            $this->projectRepository->updatePriceBuy($id,$data['price_buy']);
+        }
+        if(!is_null($data['price_sell']))
+        {
+            $this->projectRepository->updatePriceSell($id,$data['price_sell']);
+        }
+
     }
 
 }

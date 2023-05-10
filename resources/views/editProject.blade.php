@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="containter">
-        <form style="padding-top:40px; margin:auto; width: 300px;" action="" method="post">
+        <form style="padding-top:40px; margin:auto; width: 300px;" action="{{route('project.edit-submit',['id'=>$project->id])}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nazwa</label>

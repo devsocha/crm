@@ -30,7 +30,7 @@
                 <label for="status" class="form-label">Status</label>
                 <input type="text" name="end_date" value="{{$project->status}}" class="form-control" id="status" disabled>
             </div>
-            <a href="{{route('company.show',['id'=>$project->company_id])}}" class="btn btn-primary">Edytuj projekt</a>
+            <a href="{{route('project.edit',['id'=>$project->id])}}" class="btn btn-primary">Edytuj projekt</a>
             <a href="{{route('company.show',['id'=>$project->company_id])}}" class="btn btn-secondary">Wróć</a>
             <a href="{{route('project.delete',['id'=>$project->id])}}" class="btn btn-danger">Usuń</a>
             <br><br>

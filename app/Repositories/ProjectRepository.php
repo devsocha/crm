@@ -40,7 +40,11 @@ class ProjectRepository
     {
         return $this->project->where('id',$id)->first();
     }
-
+    public function changeDateFormat($date)
+    {
+        $newStartDate = new \DateTime($date);
+        return $newStartDate->format('d.m.Y');
+    }
     /**
      * @param $id
      * @return void
@@ -51,26 +55,60 @@ class ProjectRepository
     }
     /**
      * @param $id
-     * @return mixed
+     * @return void
      */
-    public function updateStatusToInProgress($id)
+    public function updateStatusToStoped($id)
     {
-        $project = $this->project->where('id',$id)->update([
-            'status'=>'in progress',
+        $this->project->where('id',$id)->update([
+            'status'=>'stoped',
         ]);
-        return $project->fresh();
     }
 
     /**
      * @param $id
-     * @return mixed
+     * @return void
      */
     public function updateStatusToFinished($id)
     {
         $project = $this->project->where('id',$id)->update([
             'status'=>'finished',
         ]);
-        return $project->fresh();
+        return $project;
+    }
+
+    public function updatePriceBuy($id, mixed $price_buy)
+    {
+        $this->project->where('id',$id)->update([
+            'price_buy'=>$price_buy,
+        ]);
+    }
+
+    public function updatePriceSell($id, mixed $price_sell)
+    {
+        $this->project->where('id',$id)->update([
+            'price_sell'=>$price_sell,
+        ]);
+    }
+
+    public function updateEndDate($id, string $end_date)
+    {
+        $this->project->where('id',$id)->update([
+            'end_date'=>$end_date,
+        ]);
+    }
+
+    public function updateStartDate($id, string $start_date)
+    {
+        $this->project->where('id',$id)->update([
+            'start_date'=>$start_date,
+        ]);
+    }
+
+    public function updateName($id, mixed $name)
+    {
+        $this->project->where('id',$id)->update([
+            'name'=>$name,
+        ]);
     }
 
 
