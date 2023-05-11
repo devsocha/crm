@@ -17,6 +17,11 @@ class Company extends Model
         'zip_code',
         'user_id',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class,'company_id','id');

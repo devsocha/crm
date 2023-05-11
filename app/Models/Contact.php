@@ -16,6 +16,10 @@ class Contact extends Model
         'phone',
         'position',
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class,'id','company_id');

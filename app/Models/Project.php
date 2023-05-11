@@ -20,6 +20,10 @@ class Project extends Model
         'user_id',
         'company_id',
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class,'id','company_id');
