@@ -25,7 +25,7 @@ class ProjectRepository
             'price_sell'=>$data['price_sell'],
             'start_date'=>$data['start_date'],
             'end_date'=>$data['end_date'],
-            'status'=>'open',
+            'status'=>'otwarte',
             'user_id'=>$data['user_id'],
             'company_id'=>$data['company_id'],
         ]);
@@ -60,7 +60,7 @@ class ProjectRepository
     public function updateStatusToStoped($id)
     {
         $this->project->where('id',$id)->update([
-            'status'=>'stoped',
+            'status'=>'wstrzymany',
         ]);
     }
 
@@ -71,7 +71,7 @@ class ProjectRepository
     public function updateStatusToFinished($id)
     {
         $project = $this->project->where('id',$id)->update([
-            'status'=>'finished',
+            'status'=>'zakończony',
         ]);
         return $project;
     }
