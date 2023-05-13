@@ -22,10 +22,11 @@ class CompanyService
     /**
      * @return mixed
      */
-    public function getAll()
+    public function getAllWithPaginate()
     {
-        return $this->companyRepository->getAll();
+        return $this->companyRepository->getAllWithPaginate();
     }
+
 
 
     /**
@@ -109,5 +110,9 @@ class CompanyService
         $company = $this->companyRepository->getByNotFullName($text);
         return $company;
 
+    }
+    public function getAll()
+    {
+        return $this->companyRepository->getAll();
     }
 }

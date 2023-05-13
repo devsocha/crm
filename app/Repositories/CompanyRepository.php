@@ -14,7 +14,7 @@ class CompanyRepository
         $this->company = $company;
     }
 
-    public function getAll()
+    public function getAllWithPaginate()
     {
         return $this->company->paginate(10);
     }
@@ -68,5 +68,10 @@ class CompanyRepository
     public function deleteCompany($id)
     {
         $this->company->where('id',$id)->delete();
+    }
+
+    public function getAll()
+    {
+        return $this->company->all();
     }
 }

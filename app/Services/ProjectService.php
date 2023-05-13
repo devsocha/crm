@@ -69,7 +69,21 @@ protected $projectRepository;
         {
             $this->projectRepository->updatePriceSell($id,$data['price_sell']);
         }
+    }
 
+    public function changeToStopped($id)
+    {
+        $this->projectRepository->updateStatusToStoped($id);
+    }
+
+    public function changeToEnd($id)
+    {
+        $this->projectRepository->updateStatusToEnd($id);
+    }
+
+    public function changeToOpen($id)
+    {
+        $this->projectRepository->updateStatusToOpen($id);
     }
 
 }

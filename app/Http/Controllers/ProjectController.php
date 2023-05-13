@@ -108,4 +108,38 @@ class ProjectController extends Controller
         }
         return redirect()->route('companies');
     }
+    public function updateStatusToEnd($id)
+    {
+        try {
+            $this->projectService->changeToEnd($id);
+            $project = $this->projectService->getProject($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('showProject')->with(['project'=>$project]);
+    }
+    public function updateStatusToStopped($id)
+    {
+        try {
+            $this->projectService->changeToStopped($id);
+            $project = $this->projectService->getProject($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('showProject')->with(['project'=>$project]);
+    }
+
+    public function updateStatusToOpen($id)
+    {
+        try {
+            $this->projectService->changeToOpen($id);
+            $project = $this->projectService->getProject($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return view('showProject')->with(['project'=>$project]);
+    }
 }

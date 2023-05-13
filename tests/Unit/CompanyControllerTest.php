@@ -69,4 +69,12 @@ class CompanyControllerTest extends TestCase
     $contacts = $companyService->getContactsByCompanyName($text);
     $this->assertSame('test',$contacts[0]['name']);
     }
+    public function test_get_companies()
+    {
+        $companyService = new CompanyService(new CompanyRepository(new Company()),new ContactRepository(new Contact()));
+        $contacts = $companyService->getAll();
+        $this->assertCount(4,$contacts);
+    }
+
+
 }

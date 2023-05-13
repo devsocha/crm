@@ -60,7 +60,7 @@ class ProjectRepository
     public function updateStatusToStoped($id)
     {
         $this->project->where('id',$id)->update([
-            'status'=>'wstrzymany',
+            'status'=>'wstrzymane',
         ]);
     }
 
@@ -68,10 +68,10 @@ class ProjectRepository
      * @param $id
      * @return void
      */
-    public function updateStatusToFinished($id)
+    public function updateStatusToEnd($id)
     {
         $project = $this->project->where('id',$id)->update([
-            'status'=>'zakończony',
+            'status'=>'zakończone',
         ]);
         return $project;
     }
@@ -109,6 +109,15 @@ class ProjectRepository
         $this->project->where('id',$id)->update([
             'name'=>$name,
         ]);
+    }
+
+    public function updateStatusToOpen($id)
+    {
+        {
+            $this->project->where('id',$id)->update([
+                'status'=>'otwarte',
+            ]);
+        }
     }
 
 

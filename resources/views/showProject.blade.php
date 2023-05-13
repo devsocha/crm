@@ -34,9 +34,12 @@
             <a href="{{route('company.show',['id'=>$project->company_id])}}" class="btn btn-secondary">Wróć</a>
             <a href="{{route('project.delete',['id'=>$project->id])}}" class="btn btn-danger">Usuń</a>
             <br><br>
-            <a href="" class="btn btn-success">Zrealizuj</a>
-            <a href="" class="btn btn-secondary">Wstrzymaj</a>
-
+            @if($project->status == 'otwarte')
+            <a href="{{route('project.edit-status-end',['id'=>$project->id])}}" class="btn btn-success">Zakończ</a>
+            <a href="{{route('project.edit-status-stopped',['id'=>$project->id])}}" class="btn btn-secondary">Wstrzymaj</a>
+            @else
+                <a href="{{route('project.edit-status-open',['id'=>$project->id])}}" class="btn btn-secondary">Otwórz ponownie</a>
+            @endif
 
         </form>
     </div>

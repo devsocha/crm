@@ -16,6 +16,8 @@ class Company extends Model
         'street',
         'zip_code',
         'user_id',
+        'created_at',
+        'updated_at',
     ];
 
     protected $hidden = [

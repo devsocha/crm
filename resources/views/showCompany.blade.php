@@ -2,7 +2,6 @@
 @section('title','Dodawanie firmy')
 
 @section('content')
-
     <div class="containter">
         <form style="padding-top:40px; margin:auto; width: 300px;" action="" method="post">
             @csrf

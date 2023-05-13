@@ -20,7 +20,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = $this->companyService->getAll();
+        $companies = $this->companyService->getAllWithPaginate();
         return view('company')->with(['companies'=>$companies]);
     }
 
@@ -32,7 +32,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     *bb Show the form for creating a new resource.
      */
     public function create()
     {

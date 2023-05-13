@@ -57,3 +57,6 @@ Route::get('/firma/projekt/{id}',[\App\Http\Controllers\ProjectController::class
 Route::get('/firma/projekt-usun/{id}',[\App\Http\Controllers\ProjectController::class,'destroy'])->name('project.delete');
 Route::get('/firma/projekt/{id}/edycja',[\App\Http\Controllers\ProjectController::class,'edit'])->name('project.edit');
 Route::post('/firma/projekt/{id}/edycja-zatwierdzenie',[\App\Http\Controllers\ProjectController::class,'update'])->name('project.edit-submit');
+Route::get('/firma/projekt/{id}/edycja-statusu-zakonczone',[\App\Http\Controllers\ProjectController::class,'updateStatusToEnd'])->name('project.edit-status-end');
+Route::get('/firma/projekt/{id}/edycja-statusu-zatrzymane',[\App\Http\Controllers\ProjectController::class,'updateStatusToStopped'])->name('project.edit-status-stopped');
+Route::get('/firma/projekt/{id}/edycja-statusu-otwarte',[\App\Http\Controllers\ProjectController::class,'updateStatusToOpen'])->name('project.edit-status-open');

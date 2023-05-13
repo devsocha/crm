@@ -1,5 +1,5 @@
 @extends('layout.nav')
-@section('title','Dodawanie kontaktu do firmy')
+@section('title','Informacje o kontakcie')
 
 @section('content')
 
@@ -28,7 +28,6 @@
             <a href="{{route('contact.edit',['id'=>$contact->id])}}" class="btn btn-primary">Edytuj kontakt</a>
             <a href="{{route('company.show',['id'=>$contact->company_id])}}" class="btn btn-secondary">Wróć</a>
             <a href="{{route('contact.delete',['id'=>$contact->id])}}" class="btn btn-danger" >Usuń</a>
-
         </form>
     </div>
 @endsection

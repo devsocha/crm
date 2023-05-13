@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function viewHomePage()
     {
-        $companies = $this->companySerivce->getAll();
+        $companies = $this->companySerivce->getAllWithPaginate();
         return view('home')->with([
             'companies'=>$companies,
         ]);
