@@ -45,8 +45,14 @@
 
         </div>
         <div class="col text-center">
-            <div>
-                <a class="btn btn-primary" href="">Dodaj dokument</a>
+            <div class="row">
+                <form method="post" action="{{route('add-file-in-company')}}" enctype="multipart/form-data">
+                    @csrf
+                    <input  type="hidden" name="company_id" value="{{$company->id}}">
+                    <input class="col" style="width: 40%" type="file" name="file">
+                    <button  type="submit" class="col btn btn-primary" >Dodaj dokument</button>
+
+                </form>
             </div>
             <div>
                 <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>

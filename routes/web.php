@@ -60,3 +60,4 @@ Route::post('/firma/projekt/{id}/edycja-zatwierdzenie',[\App\Http\Controllers\Pr
 Route::get('/firma/projekt/{id}/edycja-statusu-zakonczone',[\App\Http\Controllers\ProjectController::class,'updateStatusToEnd'])->name('project.edit-status-end');
 Route::get('/firma/projekt/{id}/edycja-statusu-zatrzymane',[\App\Http\Controllers\ProjectController::class,'updateStatusToStopped'])->name('project.edit-status-stopped');
 Route::get('/firma/projekt/{id}/edycja-statusu-otwarte',[\App\Http\Controllers\ProjectController::class,'updateStatusToOpen'])->name('project.edit-status-open');
+Route::post('/firma/dodawanie-dokumentu',[\App\Http\Controllers\FileController::class,'addDocInCompany'])->name('add-file-in-company');
