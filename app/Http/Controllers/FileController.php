@@ -20,6 +20,7 @@ class FileController extends Controller
             'file',
             'company_id',
             'contact_id',
+            'view_name',
         ]);
         try{
             $result = $this->fileService->addFileAboutCompany($data);
@@ -45,6 +46,6 @@ class FileController extends Controller
     public function downloadFile($id)
     {
         $file = $this->fileService->getFileToDownload($id);
-        return response()->download($file,'file-devsocha');
+        return response()->download($file['file'],$file['name']);
     }
 }

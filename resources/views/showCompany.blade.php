@@ -48,7 +48,7 @@
             <div class="row">
                 <form method="post" action="{{route('add-file-in-company')}}" enctype="multipart/form-data">
                     @csrf
-                    <input class="form-control col" style="width: 100%" type="text" name="name" placeholder="Wpisz nazwe pliku">
+                    <input class="form-control col" style="width: 100%" type="text" name="view_name" placeholder="Wpisz nazwe pliku">
 
                     <input  type="hidden" name="company_id" value="{{$company->id}}">
                     <input class="col mt-2" style="width: 40%" type="file" name="file">
@@ -62,13 +62,13 @@
                     <div class="row">
 
                             <div class="row" style="text-align: left; width: 100%; margin-left: 1px;margin-right: 1px;">
-                                {{$file->name}}
+                                {{$file->view_name}}
                             </div>
                             <div class="row">
-                                <a href="{{route('download-file',['id'=>$file->id])}}" class="btn btn-success" style="width: 20%; margin-left: 30%">
+                                <a href="{{route('download-file',['id'=>$file->id])}}" class="btn btn-success" style="width: 30%; margin-left: 30%">
                                     Pobierz
                                 </a>
-                                <a href="{{route('delete-file-from-company',['id'=>$file->id])}}" class="btn btn-danger" style="width: 20%; margin-left: 10px">
+                                <a href="{{route('delete-file-from-company',['id'=>$file->id])}}" class="btn btn-danger" style="width: 30%; margin-left: 10px">
                                     Usuń
                                 </a>
                             </div>

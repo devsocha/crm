@@ -19,6 +19,7 @@ class FileRepository
             'name'=>$data['name'],
             'path'=>$data['path'],
             'company_id'=>$data['company_id'],
+            'view_name'=>$data['view_name'],
         ]);
     }
     public function addInProject($data)
@@ -28,6 +29,8 @@ class FileRepository
             'path'=>$data['path'],
             'company_id'=>$data['company_id'],
             'project_id'=>$data['project_id'],
+            'view_name'=>$data['view_name'],
+
         ]);
     }
     public function get($id)

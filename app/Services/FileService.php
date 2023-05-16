@@ -19,6 +19,7 @@ class FileService
         Validator::make($data,[
             'file'=>'required | mimes:pdf,jpeg,png,jpg',
             'company_id'=>'required',
+            'view_name'=>'required',
         ]);
         $ext = $data['file']->extension();
         $nameWithoutExt = hash('sha256',time().$data['company_id']);
@@ -49,6 +50,10 @@ class FileService
     public function getFileToDownload($id)
     {
         $file = $this->fileRepository->get($id);
-        return $file->path.'/'.$file->name;
+        $data = [
+            'file'=>$file->path.'/'.$file->name,
+            'name'=>$file->view_name,
+        ];
+        return $data;
     }
 }

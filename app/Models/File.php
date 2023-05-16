@@ -14,6 +14,7 @@ class File extends Model
         'path',
         'company_id',
         'project_id',
+        'view_name',
     ];
 
     public function companies()
