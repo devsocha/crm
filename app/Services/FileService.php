@@ -37,4 +37,12 @@ class FileService
         }
         return $file;
     }
+
+    public function deleteFileAboutCompany($id)
+    {
+        $file = $this->fileRepository->get($id);
+        $this->fileRepository->delete($id);
+        unlink($file->path.'/'.$file->name);
+        return $file->company_id;
+    }
 }

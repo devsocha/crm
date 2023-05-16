@@ -48,8 +48,10 @@
             <div class="row">
                 <form method="post" action="{{route('add-file-in-company')}}" enctype="multipart/form-data">
                     @csrf
+                    <input class="form-control col" style="width: 100%" type="text" name="name" placeholder="Wpisz nazwe pliku">
+
                     <input  type="hidden" name="company_id" value="{{$company->id}}">
-                    <input class="col" style="width: 40%" type="file" name="file">
+                    <input class="col mt-2" style="width: 40%" type="file" name="file">
                     <button  type="submit" class="col btn btn-primary" >Dodaj dokument</button>
 
                 </form>

@@ -34,4 +34,9 @@ class FileRepository
     {
         return $this->file->where('id',$id)->first();
     }
+
+    public function delete($id)
+    {
+        $this->file->where('id',$id)->delete();
+    }
 }

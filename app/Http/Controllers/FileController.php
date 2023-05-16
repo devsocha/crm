@@ -25,7 +25,21 @@ class FileController extends Controller
             $result = $this->fileService->addFileAboutCompany($data);
         }catch (\Exception $e)
         {
-            echo $e->getMessage();
+
         }
+
+        return redirect()->route('company.show',['id'=>$data['company_id']]);
+    }
+
+    public function deleteDocFromCompany($id)
+    {
+        try {
+            $result = $this->fileService->deleteFileAboutCompany($id);
+        }catch (\Exception $e)
+        {
+
+        }
+        return redirect()->route('company.show',['id'=>$result]);
+
     }
 }
