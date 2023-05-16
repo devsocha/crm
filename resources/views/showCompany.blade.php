@@ -56,12 +56,27 @@
 
                 </form>
             </div>
-            <div>
-                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
-            </div>
-            <div>
-                <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"href="">test</a>
-            </div>
+            @foreach($company->files as $file)
+                <div class=" form-control mt-3">
+
+                    <div class="row">
+
+                            <div class="row" style="text-align: left; width: 100%; margin-left: 1px;margin-right: 1px;">
+                                {{$file->name}}
+                            </div>
+                            <div class="row">
+                                <a href="{{route('download-file',['id'=>$file->id])}}" class="btn btn-success" style="width: 20%; margin-left: 30%">
+                                    Pobierz
+                                </a>
+                                <a href="{{route('delete-file-from-company',['id'=>$file->id])}}" class="btn btn-danger" style="width: 20%; margin-left: 10px">
+                                    Usuń
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            @endforeach
+
+
         </div>
         <div class="col text-center">
             <div>

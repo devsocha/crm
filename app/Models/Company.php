@@ -33,4 +33,8 @@ class Company extends Model
     {
         return $this->hasMany(Project::class,'company_id','id');
     }
+    public function files(): HasMany
+    {
+        return $this->hasMany(File::class,'company_id','id');
+    }
 }

@@ -15,4 +15,9 @@ class File extends Model
         'company_id',
         'project_id',
     ];
+
+    public function companies()
+    {
+        return $this->belongsTo(Company::class,'id','company_id');
+    }
 }

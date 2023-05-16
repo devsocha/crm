@@ -128,4 +128,6 @@ class CompanyController extends Controller
         }
         return redirect()->route('companies');
     }
+
+
 }

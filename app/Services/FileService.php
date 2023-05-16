@@ -45,4 +45,10 @@ class FileService
         unlink($file->path.'/'.$file->name);
         return $file->company_id;
     }
+
+    public function getFileToDownload($id)
+    {
+        $file = $this->fileRepository->get($id);
+        return $file->path.'/'.$file->name;
+    }
 }

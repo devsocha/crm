@@ -42,4 +42,9 @@ class FileController extends Controller
         return redirect()->route('company.show',['id'=>$result]);
 
     }
+    public function downloadFile($id)
+    {
+        $file = $this->fileService->getFileToDownload($id);
+        return response()->download($file,'file-devsocha');
+    }
 }
