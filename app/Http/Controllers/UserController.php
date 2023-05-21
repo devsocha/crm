@@ -51,7 +51,26 @@ class UserController extends Controller
         return back();
 
     }
+    public function confirmPasswordView($token)
+    {
+        return view('password-confirm')->with([
+            'token'=>$token,
+        ]);
+    }
+    public function confirmPasswordSubmit(Request $request)
+    {
+        $data = $request->only([
+            'password',
+            'reTypePassword',
+            'token',
+        ]);
+        try{
+            $this->userService->confirmPasswordSubmit($data);
+        }catch (\Exception $e)
+        {
 
+        }
+    }
     public function restartPasswordView(){
         return view('forget-password');
     }

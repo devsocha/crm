@@ -119,4 +119,16 @@ class UserService
     {
         $this->userRepository->delete($id);
     }
+
+    public function confirmPasswordSubmit(array $data)
+    {
+        Validator::make($data,[
+            'password'=>'required',
+            'reTypePassword'=>'required',
+            'token'=>'required',
+        ]);
+        $user = $this->userRepository->getUserByToken($data['token']);
+        $data['id'] = $user->id;
+        $this->userRepository->updatePassword($data);
+    }
 }

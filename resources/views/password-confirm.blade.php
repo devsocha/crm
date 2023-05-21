@@ -5,6 +5,7 @@
     <form style="padding-top:40px; margin:auto; width: 300px;" action="" method="post">
         @csrf
         <div class="mb-3">
+            <input type="hidden" value="{{$token}}">
             <label for="pass" class="form-label">Wpisz hasło</label>
             <input type="text" class="form-control" name="password" id="pass">
         </div>

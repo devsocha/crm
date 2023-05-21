@@ -104,4 +104,9 @@ class UserRepository
     {
         $this->user->where('id',$id)->delete();
     }
+
+    public function getUserByToken(mixed $token)
+    {
+        return $this->user->where('token',$token)->first();
+    }
 }
