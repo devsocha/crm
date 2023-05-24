@@ -66,10 +66,11 @@ class UserController extends Controller
         ]);
         try{
             $this->userService->confirmPasswordSubmit($data);
-        }catch (\Exception $e)
-        {
+        }catch (\Exception $e) {
 
         }
+        return redirect()->route('login');
+
     }
     public function restartPasswordView(){
         return view('forget-password');

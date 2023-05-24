@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\UserController::class,'viewLoginPage'])->name('login');
-Route::post('/login/submit', [\App\Http\Controllers\UserController::class,'loginSubmit'])->name('login-submit');
-Route::get('/restart-hasla', [\App\Http\Controllers\UserController::class,'restartPasswordView'])->name('password.restart');
-Route::post('/restart-hasla', [\App\Http\Controllers\UserController::class,'restartPassword'])->name('password.restart-submit');
-
 Route::group(['middleware'=>'auth','prefix'=>'firma'],function (){
     Route::get('/{id}', [\App\Http\Controllers\CompanyController::class,'show'])->name('company.show');
     Route::get('/usuwanie/{id}', [\App\Http\Controllers\CompanyController::class,'destroy'])->name('company.delete');
@@ -71,5 +66,16 @@ Route::middleware('auth')->group(function (){
     Route::get('/kontakty', [\App\Http\Controllers\ContactController::class,'index'])->name('contacts');
     Route::get('/logout', [\App\Http\Controllers\UserController::class,'logout'])->name('logout');
     Route::post('/wyszukane-kontakty', [\App\Http\Controllers\CompanyController::class,'companiesByNameWithNoFullName'])->name('contactsBySearch');
+
+});
+
+Route::group([],function (){
+
+    Route::get('/', [\App\Http\Controllers\UserController::class,'viewLoginPage'])->name('login');
+    Route::post('/login/submit', [\App\Http\Controllers\UserController::class,'loginSubmit'])->name('login-submit');
+    Route::get('/restart-hasla', [\App\Http\Controllers\UserController::class,'restartPasswordView'])->name('password.restart');
+    Route::post('/restart-hasla-zatwierdzenie', [\App\Http\Controllers\UserController::class,'restartPassword'])->name('password.restart-submit');
+    Route::get('/restart-hasla/{token}', [\App\Http\Controllers\UserController::class,'confirmPasswordView'])->name('password.restart-confirm');
+    Route::post('/restart-hasla/confirm-zatwierdzenie', [\App\Http\Controllers\UserController::class,'confirmPasswordSubmit'])->name('password.restart-confirm-submit');
 
 });
