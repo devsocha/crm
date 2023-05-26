@@ -119,6 +119,14 @@ class ProjectRepository
             ]);
         }
     }
-
-
+    public function getTopSales($date)
+    {
+        return $this->project
+            ->selectRaw('user_id , sum(price_sell) as kwota')
+            ->take(3)
+            ->where('status','zakończone')
+            ->where('updated_at','>',$date)
+            ->groupBy('user_id')
+            ->get();
+    }
 }

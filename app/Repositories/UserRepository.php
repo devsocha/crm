@@ -109,4 +109,6 @@ class UserRepository
     {
         return $this->user->where('token',$token)->first();
     }
+
+
 }
