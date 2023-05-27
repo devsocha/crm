@@ -34,10 +34,10 @@
         </div>
     </div>
 
-    <a class="form-control mt-5" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Obrót przez ostatnie 30 dni(netto): </a>
-    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość nowych firm 30 dni: </a>
-    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość zamkniętych projektów 30 dni: </a>
-    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość nowych projektów 30 dni: </a>
+    <a class="form-control mt-5" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Obrót przez ostatnie 30 dni(netto): {{$price[0]->money}} zł</a>
+    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość nowych firm 30 dni: {{$newCompanies[0]->companies}}</a> 
+    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość zamkniętych projektów 30 dni: {{$closed[0]->numbers}}</a>
+    <a class="form-control mt-2" style="text-decoration:none;width: 80%;margin-left: auto;margin-right: auto"> Ilość nowych projektów 30 dni: {{$newProjects[0]->numbers}}</a>
 
 
 

@@ -131,13 +131,27 @@ class ProjectRepository
             ->get();
     }
 
-    public function getAllSales($date)
+    public function getAllProjectPrice($date)
     {
         return $this->project
-        ->selectRaw('sum(price_buy) as kwota')
+        ->selectRaw('sum(price_buy) as money')
         ->where('status','zakończone')
         ->where('updated_at','>',$date)
         ->get();
-
+    }
+    public function getAllFinishProjectCount($date)
+    {
+        return $this->project
+        ->selectRaw('count(*) as numbers')
+        ->where('status','zakończone')
+        ->where('updated_at','>',$date)
+        ->get();
+    }
+    public function getAllNewProjectCount($date)
+    {
+        return $this->project
+        ->selectRaw('count(*) as numbers')
+        ->where('created_at','>',$date)
+        ->get();
     }
 }

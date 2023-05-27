@@ -75,8 +75,11 @@ class CompanyRepository
         return $this->company->all();
     }
 
-    public function getAllCreatedCompanyInLastMonth()
+    public function getAllCreatedCompanyInLastMonth($date)
     {
-        
+        return $this->company
+        ->selectRaw('count(*) as companies')
+        ->where('created_at','>',$date)
+        ->get();
     }
 }

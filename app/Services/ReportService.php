@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-
+use App\Repositories\CompanyRepository;
 use App\Repositories\ProjectRepository;
 use Faker\Provider\DateTime;
 
@@ -9,15 +9,23 @@ class ReportService
 {
 
     protected $projectRepository;
-    public function __construct(ProjectRepository $projectRepository)
+    protected $companyRepository;
+    public function __construct(ProjectRepository $projectRepository, CompanyRepository $companyRepository)
     {
         $this->projectRepository = $projectRepository;
+        $this->companyRepository = $companyRepository;
     }
 
-    public function getTopSales()
+    public function getHomeReports()
     {
 
         $date = strtotime('d-m-Y','-30');
-        return $this->projectRepository->getTopSales($date);
+        $data['top'] = $this->projectRepository->getTopSales($date);
+        $data['money']= $this->projectRepository->getAllProjectPrice($date);
+        $data['allNew']=$this->companyRepository->getAllCreatedCompanyInLastMonth($date);
+        $data['finished'] = $this->projectRepository->getAllFinishProjectCount($date);
+        $data['new'] = $this->projectRepository->getAllNewProjectCount($date);
+        return $data;
+
     }
 }

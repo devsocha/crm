@@ -20,10 +20,14 @@ class HomeController extends Controller
     public function viewHomePage()
     {
         $companies = $this->companySerivce->getAllWithPaginate();
-        $sales = $this->reportService->getTopSales();
+        $data = $this->reportService->getHomeReports();
         return view('home')->with([
             'companies'=>$companies,
-            'sales'=>$sales,
+            'sales'=>$data['top'],
+            'price'=>$data['money'],
+            'newCompanies'=>$data['allNew'],
+            'closed' => $data['finished'],
+            'newProjects'=>$data['new'],
         ]);
     }
 }
