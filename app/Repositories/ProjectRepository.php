@@ -122,8 +122,9 @@ class ProjectRepository
     public function getTopSales($date)
     {
         return $this->project
-            ->selectRaw('user_id , sum(price_sell) as kwota')
+            ->selectRaw('user_id , sum(price_sell)-sum(price_buy) as kwota')
             ->take(3)
+            ->orderBy('price_buy','desc')
             ->where('status','zakończone')
             ->where('updated_at','>',$date)
             ->groupBy('user_id')
