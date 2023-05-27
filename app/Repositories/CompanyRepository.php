@@ -74,4 +74,9 @@ class CompanyRepository
     {
         return $this->company->all();
     }
+
+    public function getAllCreatedCompanyInLastMonth()
+    {
+        
+    }
 }

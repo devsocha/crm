@@ -130,4 +130,14 @@ class ProjectRepository
             ->groupBy('user_id')
             ->get();
     }
+
+    public function getAllSales($date)
+    {
+        return $this->project
+        ->selectRaw('sum(price_buy) as kwota')
+        ->where('status','zakończone')
+        ->where('updated_at','>',$date)
+        ->get();
+
+    }
 }
